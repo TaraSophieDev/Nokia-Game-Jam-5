@@ -7,7 +7,7 @@
 extents = Vector2( 3, 3.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3.25, 24 )
+extents = Vector2( 1, 24 )
 
 [node name="Obstacle" type="Area2D"]
 script = ExtResource( 2 )
