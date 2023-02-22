@@ -22,6 +22,7 @@ Global="*res://scripts/Global.gd"
 
 window/size/width=84
 window/size/height=48
+window/size/always_on_top=true
 window/size/test_width=840
 window/size/test_height=480
 window/stretch/mode="viewport"

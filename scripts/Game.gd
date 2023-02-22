@@ -3,10 +3,13 @@ extends Node
 var obstacle = preload("res://scenes/Obstacle.tscn")
 
 func _on_Player_hit():
-	$Menu.show_gameover()
+	
 	Global.saved_points += Global.score
+	if Global.run_highscore <= Global.score:
+		Global.run_highscore = Global.score
+	$Menu.show_gameover()
 	Global.score = 0
-	print(Global.saved_points)
+	print(Global.run_highscore)
 
 
 func _on_SpawnTimer_timeout():
