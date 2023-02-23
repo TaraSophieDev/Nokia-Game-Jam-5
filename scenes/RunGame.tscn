@@ -9,7 +9,7 @@
 [ext_resource path="res://theme.tres" type="Theme" id=7]
 [ext_resource path="res://scripts/Score.gd" type="Script" id=8]
 [ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scripts/Game.gd" type="Script" id=10]
+[ext_resource path="res://scripts/RunGame.gd" type="Script" id=10]
 [ext_resource path="res://exports/web_export.apple-touch-icon.png" type="Texture" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
