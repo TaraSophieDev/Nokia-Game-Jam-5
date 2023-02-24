@@ -8,7 +8,7 @@
 [ext_resource path="res://scripts/SpawnTimer.gd" type="Script" id=6]
 [ext_resource path="res://theme.tres" type="Theme" id=7]
 [ext_resource path="res://scripts/Score.gd" type="Script" id=8]
-[ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/GameOverMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/RunGame.gd" type="Script" id=10]
 [ext_resource path="res://exports/web_export.apple-touch-icon.png" type="Texture" id=11]
 
@@ -109,7 +109,7 @@ script = ExtResource( 8 )
 [node name="ScoreTimer" type="Timer" parent="Node2D/Control/Score"]
 autostart = true
 
-[node name="Menu" parent="." instance=ExtResource( 9 )]
+[node name="GameOverMenu" parent="." instance=ExtResource( 9 )]
 
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true

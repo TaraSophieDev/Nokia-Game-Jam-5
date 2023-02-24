@@ -7,7 +7,7 @@ func _on_Player_hit():
 	Global.saved_points += Global.score
 	if Global.run_highscore <= Global.score:
 		Global.run_highscore = Global.score
-	$Menu.show_gameover()
+	$GameOverMenu.show_gameover()
 	Global.score = 0
 	print(Global.run_highscore)
 

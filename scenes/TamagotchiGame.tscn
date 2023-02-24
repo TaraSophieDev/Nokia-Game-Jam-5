@@ -1,0 +1,277 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=2]
+[ext_resource path="res://sprites/frog_egg.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Time.gd" type="Script" id=4]
+[ext_resource path="res://scripts/TamagotchiGame.gd" type="Script" id=5]
+[ext_resource path="res://scenes/StatsMenu.gd" type="Script" id=6]
+[ext_resource path="res://sprites/retry_icon.png" type="Texture" id=7]
+[ext_resource path="res://sprites/data_icon.png" type="Texture" id=8]
+[ext_resource path="res://sprites/save_icon.png" type="Texture" id=9]
+[ext_resource path="res://sprites/food.png" type="Texture" id=10]
+[ext_resource path="res://sprites/background_window.png" type="Texture" id=11]
+[ext_resource path="res://sprites/select_button.png" type="Texture" id=12]
+[ext_resource path="res://scenes/Player.gd" type="Script" id=14]
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=15]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "age_0"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "age_1"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 2 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "age_2"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "age_3"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 6 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "age_4"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 8 ]
+}
+
+[node name="TamagochiGame" type="Node"]
+script = ExtResource( 5 )
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Menu" type="Control" parent="UI"]
+visible = false
+margin_right = 84.0
+margin_bottom = 48.0
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MenuBackground" type="Sprite" parent="UI/Menu"]
+position = Vector2( 42, 24 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/Menu"]
+anchor_right = 0.16
+anchor_bottom = 0.104
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 65.56
+margin_bottom = 16.008
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource( 2 )
+alignment = 1
+
+[node name="StatsButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 8 )
+texture_focused = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RunButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
+margin_left = 19.0
+margin_right = 35.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 7 )
+texture_focused = ExtResource( 12 )
+
+[node name="FoodButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
+margin_left = 38.0
+margin_right = 54.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 10 )
+texture_focused = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SaveButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
+margin_left = 57.0
+margin_right = 73.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 9 )
+texture_focused = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StatsMenu" type="Control" parent="UI"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 6 )
+
+[node name="MenuBackground" type="Sprite" parent="UI/StatsMenu"]
+position = Vector2( 42, 24 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/StatsMenu"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 56.0
+margin_bottom = 45.0
+
+[node name="Age" type="Label" parent="UI/StatsMenu/VBoxContainer"]
+margin_right = 54.0
+margin_bottom = 10.0
+theme = ExtResource( 2 )
+text = "Age: "
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Hunger" type="Label" parent="UI/StatsMenu/VBoxContainer"]
+margin_top = 14.0
+margin_right = 54.0
+margin_bottom = 24.0
+theme = ExtResource( 2 )
+text = "Hunger: "
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Highscore" type="Label" parent="UI/StatsMenu/VBoxContainer"]
+margin_top = 28.0
+margin_right = 54.0
+margin_bottom = 38.0
+theme = ExtResource( 2 )
+text = "Highscore: "
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="IdleScreen" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="MenuBackground" type="Sprite" parent="UI/IdleScreen"]
+position = Vector2( 42, 24 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Time" type="Label" parent="UI/IdleScreen"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 80.0
+margin_bottom = 18.0
+theme = ExtResource( 2 )
+text = "00:00:00"
+align = 1
+valign = 1
+script = ExtResource( 4 )
+
+[node name="Player" type="Sprite" parent="."]
+position = Vector2( 43, 33 )
+texture = ExtResource( 3 )
+hframes = 10
+script = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+autoplay = "age_0"
+anims/RESET = SubResource( 1 )
+anims/age_0 = SubResource( 2 )
+anims/age_1 = SubResource( 4 )
+anims/age_2 = SubResource( 3 )
+anims/age_3 = SubResource( 5 )
+anims/age_4 = SubResource( 6 )
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="pressed" from="UI/Menu/VBoxContainer/StatsButton" to="." method="_on_StatsButton_pressed"]
+[connection signal="pressed" from="UI/Menu/VBoxContainer/RunButton" to="." method="_on_RunButton_pressed"]
+[connection signal="pressed" from="UI/Menu/VBoxContainer/FoodButton" to="." method="_on_FoodButton_pressed"]
+[connection signal="pressed" from="UI/Menu/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]

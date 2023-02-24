@@ -8,5 +8,6 @@ font_data = ExtResource( 1 )
 
 [resource]
 default_font = SubResource( 1 )
+HBoxContainer/constants/separation = 2
 Label/colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 RichTextLabel/colors/default_color = Color( 0.262745, 0.321569, 0.239216, 1 )
