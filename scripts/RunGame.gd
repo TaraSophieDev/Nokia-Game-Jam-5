@@ -4,7 +4,7 @@ var obstacle = preload("res://scenes/Obstacle.tscn")
 
 func _on_Player_hit():
 	
-	Global.saved_points += Global.score
+	Global.money += Global.score
 	if Global.run_highscore <= Global.score:
 		Global.run_highscore = Global.score
 	$GameOverMenu.show_gameover()

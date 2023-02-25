@@ -6,7 +6,7 @@ signal back_to_menu
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _process(delta):
 	$VBoxContainer/Age.text = "Age: " + String(Global.age)
 	$VBoxContainer/Hunger.text = "Hunger: " + String(Global.hunger)
 	$VBoxContainer/Highscore.text = "Highscore: " + String(Global.run_highscore)

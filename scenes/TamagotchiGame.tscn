@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scripts/IdleScreen.gd" type="Script" id=1]
 [ext_resource path="res://theme.tres" type="Theme" id=2]
@@ -12,7 +12,10 @@
 [ext_resource path="res://sprites/food.png" type="Texture" id=10]
 [ext_resource path="res://sprites/background_window.png" type="Texture" id=11]
 [ext_resource path="res://sprites/select_button.png" type="Texture" id=12]
+[ext_resource path="res://sprites/heart.png" type="Texture" id=13]
 [ext_resource path="res://scripts/PlayerTamagotchi.gd" type="Script" id=14]
+[ext_resource path="res://sprites/sad_face.png" type="Texture" id=15]
+[ext_resource path="res://sprites/food_icon.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -112,13 +115,107 @@ tracks/0/keys = {
 "values": [ 8, 9, 8 ]
 }
 
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "heart"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "sad"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "hunger"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0, 1, 0 ]
+}
+
 [node name="TamagochiGame" type="Node"]
 script = ExtResource( 5 )
 
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Menu" type="Control" parent="UI"]
-visible = false
 margin_right = 84.0
 margin_bottom = 48.0
 __meta__ = {
@@ -189,6 +286,14 @@ texture_focused = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Money" type="Label" parent="UI/Menu"]
+margin_left = 5.0
+margin_top = 34.0
+margin_right = 35.0
+margin_bottom = 44.0
+theme = ExtResource( 2 )
+text = "$0"
 
 [node name="StatsMenu" type="Control" parent="UI"]
 visible = false
@@ -277,8 +382,39 @@ anims/age_2 = SubResource( 3 )
 anims/age_3 = SubResource( 5 )
 anims/age_4 = SubResource( 6 )
 
+[node name="Heart" type="Sprite" parent="Player"]
+visible = false
+position = Vector2( 11, -7 )
+texture = ExtResource( 13 )
+flip_h = true
+hframes = 2
+
+[node name="HeartAnimationPlayer" type="AnimationPlayer" parent="Player/Heart"]
+anims/RESET = SubResource( 7 )
+anims/heart = SubResource( 8 )
+
+[node name="SadFace" type="Sprite" parent="Player"]
+visible = false
+position = Vector2( -10, -7 )
+texture = ExtResource( 15 )
+hframes = 2
+
+[node name="SadFaceAnimationPlayer" type="AnimationPlayer" parent="Player/SadFace"]
+anims/RESET = SubResource( 9 )
+anims/sad = SubResource( 10 )
+
+[node name="Hunger" type="Sprite" parent="Player"]
+visible = false
+position = Vector2( 10, -8 )
+texture = ExtResource( 16 )
+hframes = 2
+
+[node name="HungerAnimationPlayer" type="AnimationPlayer" parent="Player/Hunger"]
+anims/RESET = SubResource( 11 )
+anims/hunger = SubResource( 12 )
+
 [node name="IdleTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 30.0
 autostart = true
 
 [connection signal="pressed" from="UI/Menu/VBoxContainer/StatsButton" to="." method="_on_StatsButton_pressed"]
