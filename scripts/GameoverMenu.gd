@@ -7,6 +7,7 @@ func show_gameover():
 	$Highscore.text = "Highscore: " + String(Global.run_highscore)
 	
 	$Retry.show()
+	$Retry.grab_focus()
 	$Highscore.show()
 	$Tamagotchi.show()
 

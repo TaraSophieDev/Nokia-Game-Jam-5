@@ -1,10 +1,8 @@
 extends Control
 
-onready var menu = $"../Menu"
+onready var player = $"../../Player"
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal back_to_menu
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,5 +18,4 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
-		hide()
-		menu.show()
+		emit_signal("back_to_menu")
