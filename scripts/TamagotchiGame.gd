@@ -1,11 +1,16 @@
 extends Node
 
+
 onready var idle_screen_ui = $UI/IdleScreen
 onready var menu_ui = $UI/Menu
 onready var stats_ui = $UI/StatsMenu
 onready var player = $Player
 onready var idle_timer = $IdleTimer
 onready var money = $UI/Menu/Money
+onready var delete_screen = $UI/DeleteScreen
+
+
+var _save := SaveGame.new()
 
 var food_costs: int = 50
 
@@ -13,7 +18,8 @@ var food_costs: int = 50
 enum {
 	MENU,
 	STATS,
-	IDLE
+	IDLE,
+	DELETE
 }
 
 var ui_state = MENU
@@ -36,6 +42,7 @@ func _process(delta):
 		MENU:
 			idle_screen_ui.hide()
 			stats_ui.hide()
+			delete_screen.hide()
 			menu_ui.show()
 			player.show()
 			$UI/Menu/Money.text = "$" + String(Global.money)
@@ -44,7 +51,22 @@ func _process(delta):
 			menu_ui.hide()
 			player.hide()
 			stats_ui.show()
+		DELETE:
+			idle_screen_ui.hide()
+			menu_ui.hide()
+			player.hide()
+			delete_screen.show()
 			
+			
+func _input(event):
+	if Input.is_action_pressed("delete_save"):
+		ui_state = DELETE
+		if $DeleteTimer.time_left <= 0:
+			$DeleteTimer.start()
+		$UI/DeleteScreen/DeleteLabel.text = "Delete Save \nin: " + String("%01d" % $DeleteTimer.time_left)
+	elif Input.is_action_just_released("delete_save"):
+		$DeleteTimer.stop()
+		_on_back_to_menu()
 
 func _on_RunButton_pressed():
 	get_tree().change_scene("res://scenes/RunGame.tscn")
@@ -62,6 +84,7 @@ func _on_StatsButton_pressed():
 
 func _on_FoodButton_pressed():
 	if Global.money >= food_costs:
+		$HungerTimer.start()
 		Global.hunger += 10
 		if Global.hunger > 99:
 			Global.hunger = 99
@@ -69,7 +92,7 @@ func _on_FoodButton_pressed():
 
 
 func _on_SaveButton_pressed():
-	pass # Replace with function body.
+	_save.write_savegame()
 
 
 
@@ -80,3 +103,8 @@ func _on_back_to_menu():
 	yield(get_tree(), "idle_frame")
 	$UI/Menu/VBoxContainer/StatsButton.grab_focus()
 	idle_timer.start()
+
+
+func _on_DeleteTimer_timeout():
+	_save.delete_savegame()
+	get_tree().change_scene("res://scenes/Intro.tscn")

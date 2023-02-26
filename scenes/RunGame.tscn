@@ -10,7 +10,7 @@
 [ext_resource path="res://scripts/Score.gd" type="Script" id=8]
 [ext_resource path="res://scenes/GameOverMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/RunGame.gd" type="Script" id=10]
-[ext_resource path="res://exports/web_export.apple-touch-icon.png" type="Texture" id=11]
+[ext_resource path="res://audio/nokia_soundpack_@trix/hit3.wav" type="AudioStream" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
@@ -122,13 +122,14 @@ position = Vector2( 84, 35 )
 visible = false
 position = Vector2( 5, 14 )
 scale = Vector2( 0.05, 0.0333333 )
-texture = ExtResource( 11 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 visible = false
 position = Vector2( 5, 25 )
 scale = Vector2( 0.05, 0.0333333 )
-texture = ExtResource( 11 )
+
+[node name="HitAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="Node2D/Control/Score/ScoreTimer" to="Node2D/Control/Score" method="_on_ScoreTimer_timeout"]

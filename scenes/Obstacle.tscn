@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprites/cactuss.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Obstacle.gd" type="Script" id=2]
+[ext_resource path="res://audio/nokia_soundpack_@trix/blip5.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 3.5 )
@@ -27,6 +28,9 @@ position = Vector2( 1, -19 )
 shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_Obstacle_body_entered"]
 [connection signal="body_entered" from="Detection" to="." method="_on_Detection_body_entered"]

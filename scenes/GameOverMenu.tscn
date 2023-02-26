@@ -9,8 +9,12 @@
 [node name="GameOverMenu" type="CanvasLayer"]
 script = ExtResource( 3 )
 
-[node name="Retry" type="TextureButton" parent="."]
+[node name="GameOverUI" type="Control" parent="."]
 visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Retry" type="TextureButton" parent="GameOverUI"]
 margin_left = 27.0
 margin_top = 20.0
 margin_right = 43.0
@@ -18,15 +22,13 @@ margin_bottom = 36.0
 texture_normal = ExtResource( 2 )
 texture_focused = ExtResource( 5 )
 
-[node name="Highscore" type="Label" parent="."]
-visible = false
+[node name="Highscore" type="Label" parent="GameOverUI"]
 margin_right = 84.0
 margin_bottom = 10.0
 theme = ExtResource( 4 )
 text = "Highscore: "
 
-[node name="Tamagotchi" type="TextureButton" parent="."]
-visible = false
+[node name="Tamagotchi" type="TextureButton" parent="GameOverUI"]
 margin_left = 43.0
 margin_top = 20.0
 margin_right = 59.0
@@ -34,5 +36,5 @@ margin_bottom = 36.0
 texture_normal = ExtResource( 1 )
 texture_focused = ExtResource( 5 )
 
-[connection signal="pressed" from="Retry" to="." method="_on_Retry_pressed"]
-[connection signal="pressed" from="Tamagotchi" to="." method="_on_Tamagotchi_pressed"]
+[connection signal="pressed" from="GameOverUI/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="GameOverUI/Tamagotchi" to="." method="_on_Tamagotchi_pressed"]

@@ -10,7 +10,7 @@ func _ready():
 
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
-	$VBoxContainer/Age.text = "Age: " + String(Global.age)
+	$VBoxContainer/Age.text = "Age: " + String("%2.2f" % Global.age)
 	$VBoxContainer/Hunger.text = "Hunger: " + String(Global.hunger)
 	$VBoxContainer/Highscore.text = "Score: " + String(Global.run_highscore)
 

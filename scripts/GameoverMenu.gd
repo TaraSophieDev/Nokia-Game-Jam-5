@@ -1,24 +1,25 @@
 extends CanvasLayer
 
-signal gameover
-		
+var _save = SaveGame.new()
 
-func show_gameover():
-	$Highscore.text = "Highscore: " + String(Global.run_highscore)
+onready var game_over_ui = $GameOverUI
+onready var highscore = $GameOverUI/Highscore
+
+signal gameover
+
 	
-	$Retry.show()
-	$Retry.grab_focus()
-	$Highscore.show()
-	$Tamagotchi.show()
+func show_gameover():
+	highscore.text = "Highscore: " + String(Global.run_highscore)
+	game_over_ui.show()
+	$GameOverUI/Retry.grab_focus()
 
 
 func _on_Retry_pressed():
 	emit_signal("gameover")
 	get_tree().reload_current_scene()
-	$Retry.hide()
-	$Highscore.hide()
-	$Tamagotchi.hide()
+	game_over_ui.hide()
 
 
 func _on_Tamagotchi_pressed():
+	_save.write_savegame()
 	get_tree().change_scene("res://scenes/TamagotchiGame.tscn")

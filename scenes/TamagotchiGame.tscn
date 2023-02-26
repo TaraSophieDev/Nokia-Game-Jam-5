@@ -210,7 +210,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 0, 1, 0, 1, 0 ]
 }
 
-[node name="TamagochiGame" type="Node"]
+[node name="TamagotchiGame" type="Node"]
 script = ExtResource( 5 )
 
 [node name="UI" type="Node2D" parent="."]
@@ -240,12 +240,12 @@ margin_bottom = 16.008
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource( 2 )
-custom_constants/separation = 0
+custom_constants/separation = 2
 alignment = 1
 
 [node name="StatsButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 4.0
-margin_right = 20.0
+margin_left = 1.0
+margin_right = 17.0
 margin_bottom = 16.0
 focus_neighbour_left = NodePath("../SaveButton")
 focus_neighbour_right = NodePath("../RunButton")
@@ -257,8 +257,8 @@ __meta__ = {
 }
 
 [node name="RunButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 20.0
-margin_right = 36.0
+margin_left = 19.0
+margin_right = 35.0
 margin_bottom = 16.0
 focus_neighbour_left = NodePath("../StatsButton")
 focus_neighbour_right = NodePath("../FoodButton")
@@ -266,8 +266,8 @@ texture_normal = ExtResource( 7 )
 texture_focused = ExtResource( 12 )
 
 [node name="FoodButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 36.0
-margin_right = 52.0
+margin_left = 37.0
+margin_right = 53.0
 margin_bottom = 16.0
 focus_neighbour_left = NodePath("../RunButton")
 focus_neighbour_right = NodePath("../SaveButton")
@@ -278,8 +278,8 @@ __meta__ = {
 }
 
 [node name="SaveButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 52.0
-margin_right = 68.0
+margin_left = 55.0
+margin_right = 71.0
 margin_bottom = 16.0
 focus_neighbour_left = NodePath("../FoodButton")
 focus_neighbour_right = NodePath("../StatsButton")
@@ -298,6 +298,7 @@ theme = ExtResource( 2 )
 text = "$0"
 
 [node name="StatsMenu" type="Control" parent="UI"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 6 )
@@ -377,6 +378,27 @@ align = 1
 valign = 1
 script = ExtResource( 4 )
 
+[node name="DeleteScreen" type="Control" parent="UI"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="MenuBackground" type="Sprite" parent="UI/DeleteScreen"]
+position = Vector2( 42, 24 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DeleteLabel" type="Label" parent="UI/DeleteScreen"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 77.0
+margin_bottom = 28.0
+theme = ExtResource( 2 )
+text = "Delete Save 
+in:"
+
 [node name="Player" type="Sprite" parent="."]
 position = Vector2( 65, 34 )
 texture = ExtResource( 3 )
@@ -427,6 +449,16 @@ anims/hunger = SubResource( 12 )
 wait_time = 30.0
 autostart = true
 
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="HungerTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="UI/Menu/VBoxContainer/StatsButton" to="." method="_on_StatsButton_pressed"]
 [connection signal="pressed" from="UI/Menu/VBoxContainer/RunButton" to="." method="_on_RunButton_pressed"]
 [connection signal="pressed" from="UI/Menu/VBoxContainer/FoodButton" to="." method="_on_FoodButton_pressed"]
@@ -434,3 +466,5 @@ autostart = true
 [connection signal="back_to_menu" from="UI/StatsMenu" to="." method="_on_back_to_menu"]
 [connection signal="back_to_menu" from="UI/IdleScreen" to="." method="_on_back_to_menu"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_DeleteTimer_timeout"]
+[connection signal="timeout" from="HungerTimer" to="Player" method="_on_HungerTimer_timeout"]
