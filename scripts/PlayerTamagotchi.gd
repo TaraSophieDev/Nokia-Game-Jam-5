@@ -76,11 +76,11 @@ func _on_HungerTimer_timeout():
 	if Global.age >= 4.0:
 		Global.hunger -= 0
 	elif Global.age >= 3.0:
-		Global.hunger -= 6
+		Global.hunger -= 5
 	elif Global.age >= 2.0:
-		Global.hunger -= 4
+		Global.hunger -= 3
 	elif Global.age >= 1.0:
-		Global.hunger -= 2
+		Global.hunger -= 1
 	else:
 		Global.hunger -= 0.25
 	print("Hunger triggered: ", Global.hunger)
