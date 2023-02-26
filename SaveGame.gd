@@ -24,6 +24,7 @@ func write_savegame():
 		"age": Global.age,
 		"hunger": Global.hunger,
 		"money": Global.money,
+		"seen_win_screen": Global.seen_win_screen,
 	}
 	
 	var json_string := JSON.print(data)
@@ -45,6 +46,7 @@ func load_savegame():
 	Global.age = data.age
 	Global.hunger = data.hunger
 	Global.money = data.money
+	Global.seen_win_screen = data.seen_win_screen
 
 func delete_savegame():
 	var dir = Directory.new()

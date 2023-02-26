@@ -69,7 +69,12 @@ func _input(event):
 		_on_back_to_menu()
 
 func _on_RunButton_pressed():
-	get_tree().change_scene("res://scenes/RunGame.tscn")
+	
+	if Global.age >= 1:
+		$ClickAudio.play()
+		get_tree().change_scene("res://scenes/RunGame.tscn")
+	else:
+		$DenyAudio.play()
 	
 
 func _on_IdleTimer_timeout():
@@ -78,26 +83,32 @@ func _on_IdleTimer_timeout():
 
 func _on_StatsButton_pressed():
 	ui_state = STATS
+	$ClickAudio.play()
 	idle_timer.start()
 	
 
 
 func _on_FoodButton_pressed():
 	if Global.money >= food_costs:
+		$ClickAudio.play()
 		$HungerTimer.start()
 		Global.hunger += 10
 		if Global.hunger > 99:
 			Global.hunger = 99
 		Global.money -= food_costs
+	else:
+		$DenyAudio.play()
 
 
 func _on_SaveButton_pressed():
 	_save.write_savegame()
+	$SaveAudio.play()
 
 
 
 func _on_back_to_menu():
 	ui_state = MENU
+	$ClickAudio.play()
 	# This makes the button focused after a frame, bc it wouldn't work else (tried to grab focus when not even visible)
 	# Thank you so much Alice <3
 	yield(get_tree(), "idle_frame")

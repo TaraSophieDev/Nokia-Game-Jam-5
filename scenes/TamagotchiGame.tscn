@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/IdleScreen.gd" type="Script" id=1]
 [ext_resource path="res://theme.tres" type="Theme" id=2]
@@ -11,11 +11,14 @@
 [ext_resource path="res://sprites/save_icon.png" type="Texture" id=9]
 [ext_resource path="res://sprites/food_selected.png" type="Texture" id=10]
 [ext_resource path="res://sprites/background_window.png" type="Texture" id=11]
-[ext_resource path="res://sprites/select_button.png" type="Texture" id=12]
+[ext_resource path="res://sprites/focused_icon.png" type="Texture" id=12]
 [ext_resource path="res://sprites/heart.png" type="Texture" id=13]
 [ext_resource path="res://scripts/PlayerTamagotchi.gd" type="Script" id=14]
 [ext_resource path="res://sprites/sad_face.png" type="Texture" id=15]
 [ext_resource path="res://sprites/food_icon.png" type="Texture" id=16]
+[ext_resource path="res://audio/nokia_soundpack_@trix/good3.wav" type="AudioStream" id=17]
+[ext_resource path="res://audio/nokia_soundpack_@trix/blip14.wav" type="AudioStream" id=18]
+[ext_resource path="res://audio/nokia_soundpack_@trix/hit5.wav" type="AudioStream" id=19]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -216,7 +219,6 @@ script = ExtResource( 5 )
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Menu" type="Control" parent="UI"]
-visible = false
 margin_right = 84.0
 margin_bottom = 48.0
 __meta__ = {
@@ -233,10 +235,10 @@ __meta__ = {
 [node name="VBoxContainer" type="HBoxContainer" parent="UI/Menu"]
 anchor_right = 0.16
 anchor_bottom = 0.104
-margin_left = 6.0
+margin_left = 5.0
 margin_top = 5.0
 margin_right = 65.56
-margin_bottom = 16.008
+margin_bottom = 29.008
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource( 2 )
@@ -244,9 +246,9 @@ custom_constants/separation = 2
 alignment = 1
 
 [node name="StatsButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 1.0
-margin_right = 17.0
-margin_bottom = 16.0
+margin_left = 2.0
+margin_right = 18.0
+margin_bottom = 29.0
 focus_neighbour_left = NodePath("../SaveButton")
 focus_neighbour_right = NodePath("../RunButton")
 action_mode = 0
@@ -257,18 +259,18 @@ __meta__ = {
 }
 
 [node name="RunButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 19.0
-margin_right = 35.0
-margin_bottom = 16.0
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 29.0
 focus_neighbour_left = NodePath("../StatsButton")
 focus_neighbour_right = NodePath("../FoodButton")
 texture_normal = ExtResource( 7 )
 texture_focused = ExtResource( 12 )
 
 [node name="FoodButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 37.0
-margin_right = 53.0
-margin_bottom = 16.0
+margin_left = 38.0
+margin_right = 54.0
+margin_bottom = 29.0
 focus_neighbour_left = NodePath("../RunButton")
 focus_neighbour_right = NodePath("../SaveButton")
 texture_normal = ExtResource( 10 )
@@ -278,9 +280,9 @@ __meta__ = {
 }
 
 [node name="SaveButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 55.0
-margin_right = 71.0
-margin_bottom = 16.0
+margin_left = 56.0
+margin_right = 72.0
+margin_bottom = 29.0
 focus_neighbour_left = NodePath("../FoodButton")
 focus_neighbour_right = NodePath("../StatsButton")
 texture_normal = ExtResource( 9 )
@@ -457,7 +459,14 @@ one_shot = true
 wait_time = 1.5
 autostart = true
 
-[node name="Audio" type="AudioStreamPlayer" parent="."]
+[node name="SaveAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="DenyAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
 
 [connection signal="pressed" from="UI/Menu/VBoxContainer/StatsButton" to="." method="_on_StatsButton_pressed"]
 [connection signal="pressed" from="UI/Menu/VBoxContainer/RunButton" to="." method="_on_RunButton_pressed"]

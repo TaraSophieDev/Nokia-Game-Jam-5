@@ -33,7 +33,7 @@ margin_top = 22.0
 margin_right = 79.0
 margin_bottom = 42.0
 theme = ExtResource( 2 )
-max_length = 11
+max_length = 9
 placeholder_text = "Name"
 
 [connection signal="text_entered" from="Node2D/Control/NameBox" to="." method="_on_NameBox_text_entered"]

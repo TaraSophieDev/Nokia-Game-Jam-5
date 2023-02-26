@@ -7,7 +7,7 @@ func _process(delta):
 
 func _on_Detection_body_entered(body):
 	if body.is_in_group("Player"):
-		Global.score += 3
+		Global.score += 5
 		$Audio.play()
 
 

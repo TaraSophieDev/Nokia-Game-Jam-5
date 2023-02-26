@@ -7,11 +7,16 @@ export var saturated: int = 60
 export var hungry: int = 90
 export var starving: int = 0
 
+func _ready():
+	pass
+
 func _process(delta):
 	
 	print("age: ", Global.age)
 	
-	if Global.age >= 4.0:
+	if Global.age >= 4.5 and Global.seen_win_screen == false:
+		get_tree().change_scene("res://scenes/Win.tscn")
+	elif Global.age >= 4.0:
 		animation_player.play("age_4")
 	elif Global.age >= 3.0:
 		animation_player.play("age_3")
@@ -33,7 +38,10 @@ func _process(delta):
 	#	4.0:
 	#		animation_player.play("age_4")
 	
-	if Global.hunger >= 75:
+	if Global.age <= 1.0:
+		Global.age += delta / 10
+	
+	if Global.hunger >= 70:
 		Global.age += delta / very_saturated
 		$Heart.show()
 		$Heart/HeartAnimationPlayer.play("heart")
@@ -65,12 +73,14 @@ func _process(delta):
 
 
 func _on_HungerTimer_timeout():
-	if Global.age >= 3.0:
+	if Global.age >= 4.0:
+		Global.hunger -= 0
+	elif Global.age >= 3.0:
 		Global.hunger -= 6
 	elif Global.age >= 2.0:
 		Global.hunger -= 4
 	elif Global.age >= 1.0:
 		Global.hunger -= 2
 	else:
-		Global.hunger -= 1
+		Global.hunger -= 0.25
 	print("Hunger triggered: ", Global.hunger)

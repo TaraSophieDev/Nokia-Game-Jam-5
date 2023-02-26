@@ -11,3 +11,6 @@ var age: float = 0.0
 var hunger: int = 99
 var money: int = 0
 
+# Win
+var seen_win_screen: bool = false
+

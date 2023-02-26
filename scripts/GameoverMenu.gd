@@ -11,13 +11,13 @@ signal gameover
 func show_gameover():
 	highscore.text = "Highscore: " + String(Global.run_highscore)
 	game_over_ui.show()
-	$GameOverUI/Retry.grab_focus()
+	$GameOverUI/Home.grab_focus()
 
 
-func _on_Retry_pressed():
-	emit_signal("gameover")
-	get_tree().reload_current_scene()
-	game_over_ui.hide()
+#func _on_Retry_pressed():
+#	emit_signal("gameover")
+#	get_tree().reload_current_scene()
+#	game_over_ui.hide()
 
 
 func _on_Tamagotchi_pressed():

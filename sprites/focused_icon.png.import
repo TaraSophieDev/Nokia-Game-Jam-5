@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/select_button.png-a33f41078e627183fc94f8b8c731208b.stex"
+path="res://.import/focused_icon.png-032b6e0b3506caefbad919da9db8d566.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/select_button.png"
-dest_files=[ "res://.import/select_button.png-a33f41078e627183fc94f8b8c731208b.stex" ]
+source_file="res://sprites/focused_icon.png"
+dest_files=[ "res://.import/focused_icon.png-032b6e0b3506caefbad919da9db8d566.stex" ]
 
 [params]
 
