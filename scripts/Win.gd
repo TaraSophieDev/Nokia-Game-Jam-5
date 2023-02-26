@@ -13,7 +13,3 @@ func _on_HomeButton_pressed():
 	_save.write_savegame()
 	get_tree().change_scene("res://scenes/TamagotchiGame.tscn")
 
-
-func _on_CloseButton_pressed():
-	_save.write_savegame()
-	get_tree().quit()

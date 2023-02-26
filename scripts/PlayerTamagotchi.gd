@@ -41,7 +41,7 @@ func _process(delta):
 	if Global.age <= 1.0:
 		Global.age += delta / 10
 	
-	if Global.hunger >= 75:
+	if Global.hunger >= 70:
 		Global.age += delta / very_saturated
 		$Heart.show()
 		$Heart/HeartAnimationPlayer.play("heart")
