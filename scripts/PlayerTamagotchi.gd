@@ -4,7 +4,7 @@ onready var animation_player = $AnimationPlayer
 
 
 func _process(delta):
-	Global.hunger = 1
+	Global.hunger = 99
 	
 	match Global.age:
 		0.0:
@@ -21,6 +21,8 @@ func _process(delta):
 	if Global.hunger >= 75:
 		$Heart.show()
 		$Heart/HeartAnimationPlayer.play("heart")
+	elif Global.hunger <= 0:
+		get_tree().change_scene("res://scenes/Death.tscn")
 	elif Global.hunger <= 5:
 		$Hunger.show()
 		$Hunger/HungerAnimationPlayer.play("hunger", -1, 2.0)

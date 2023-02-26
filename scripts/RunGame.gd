@@ -9,7 +9,6 @@ func _on_Player_hit():
 		Global.run_highscore = Global.score
 	$GameOverMenu.show_gameover()
 	Global.score = 0
-	print(Global.run_highscore)
 
 
 func _on_SpawnTimer_timeout():

@@ -7,6 +7,8 @@ onready var player = $Player
 onready var idle_timer = $IdleTimer
 onready var money = $UI/Menu/Money
 
+var food_costs: int = 50
+
 
 enum {
 	MENU,
@@ -24,6 +26,7 @@ func _ready():
 	
 
 func _process(delta):
+	
 	match ui_state:
 		IDLE:
 			menu_ui.hide()
@@ -58,17 +61,11 @@ func _on_StatsButton_pressed():
 
 
 func _on_FoodButton_pressed():
-	if Global.money >= 10:
-		print("works bitch")
+	if Global.money >= food_costs:
 		Global.hunger += 10
 		if Global.hunger > 99:
 			Global.hunger = 99
-		Global.money -= 10
-	
-	print(Global.hunger)
-	print(Global.money)
-	
-	
+		Global.money -= food_costs
 
 
 func _on_SaveButton_pressed():

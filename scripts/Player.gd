@@ -34,6 +34,4 @@ func _physics_process(delta):
 
 func player_hit():
 	emit_signal("hit")
-	health -= 1
-	if health == 0:
-		queue_free()
+	queue_free()

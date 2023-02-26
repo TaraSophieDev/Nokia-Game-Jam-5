@@ -1,8 +1,8 @@
 extends Timer
 
 
-var min_time: float = 2
-var max_time: float = 5
+var min_time: float = 1
+var max_time: float = 4
 
 func _ready():
 	randtime()

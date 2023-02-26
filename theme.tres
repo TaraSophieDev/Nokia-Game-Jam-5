@@ -1,6 +1,15 @@
-[gd_resource type="Theme" load_steps=3 format=2]
+[gd_resource type="Theme" load_steps=5 format=2]
 
 [ext_resource path="res://nokiafc22.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://sprites/background_window.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 84, 48 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 3.39618
+margin_bottom = 5.0
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -10,4 +19,9 @@ font_data = ExtResource( 1 )
 default_font = SubResource( 1 )
 HBoxContainer/constants/separation = 2
 Label/colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+LineEdit/colors/cursor_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+LineEdit/colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/styles/focus = SubResource( 2 )
+LineEdit/styles/normal = SubResource( 2 )
 RichTextLabel/colors/default_color = Color( 0.262745, 0.321569, 0.239216, 1 )

@@ -1,9 +1,9 @@
 extends CanvasLayer
 
 signal gameover
+		
 
 func show_gameover():
-	print(Global.run_highscore)
 	$Highscore.text = "Highscore: " + String(Global.run_highscore)
 	
 	$Retry.show()

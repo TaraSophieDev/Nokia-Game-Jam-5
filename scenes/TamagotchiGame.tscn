@@ -9,7 +9,7 @@
 [ext_resource path="res://sprites/retry_icon.png" type="Texture" id=7]
 [ext_resource path="res://sprites/data_icon.png" type="Texture" id=8]
 [ext_resource path="res://sprites/save_icon.png" type="Texture" id=9]
-[ext_resource path="res://sprites/food.png" type="Texture" id=10]
+[ext_resource path="res://sprites/food_selected.png" type="Texture" id=10]
 [ext_resource path="res://sprites/background_window.png" type="Texture" id=11]
 [ext_resource path="res://sprites/select_button.png" type="Texture" id=12]
 [ext_resource path="res://sprites/heart.png" type="Texture" id=13]
@@ -216,6 +216,7 @@ script = ExtResource( 5 )
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Menu" type="Control" parent="UI"]
+visible = false
 margin_right = 84.0
 margin_bottom = 48.0
 __meta__ = {
@@ -239,11 +240,12 @@ margin_bottom = 16.008
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource( 2 )
+custom_constants/separation = 0
 alignment = 1
 
 [node name="StatsButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 1.0
-margin_right = 17.0
+margin_left = 4.0
+margin_right = 20.0
 margin_bottom = 16.0
 focus_neighbour_left = NodePath("../SaveButton")
 focus_neighbour_right = NodePath("../RunButton")
@@ -255,8 +257,8 @@ __meta__ = {
 }
 
 [node name="RunButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 19.0
-margin_right = 35.0
+margin_left = 20.0
+margin_right = 36.0
 margin_bottom = 16.0
 focus_neighbour_left = NodePath("../StatsButton")
 focus_neighbour_right = NodePath("../FoodButton")
@@ -264,8 +266,8 @@ texture_normal = ExtResource( 7 )
 texture_focused = ExtResource( 12 )
 
 [node name="FoodButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 37.0
-margin_right = 53.0
+margin_left = 36.0
+margin_right = 52.0
 margin_bottom = 16.0
 focus_neighbour_left = NodePath("../RunButton")
 focus_neighbour_right = NodePath("../SaveButton")
@@ -276,8 +278,8 @@ __meta__ = {
 }
 
 [node name="SaveButton" type="TextureButton" parent="UI/Menu/VBoxContainer"]
-margin_left = 55.0
-margin_right = 71.0
+margin_left = 52.0
+margin_right = 68.0
 margin_bottom = 16.0
 focus_neighbour_left = NodePath("../FoodButton")
 focus_neighbour_right = NodePath("../StatsButton")
@@ -296,7 +298,6 @@ theme = ExtResource( 2 )
 text = "$0"
 
 [node name="StatsMenu" type="Control" parent="UI"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 6 )
@@ -310,13 +311,22 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/StatsMenu"]
 margin_left = 5.0
-margin_top = 5.0
-margin_right = 56.0
-margin_bottom = 45.0
+margin_top = 4.0
+margin_right = 59.0
+margin_bottom = 47.0
+theme = ExtResource( 2 )
+custom_constants/separation = 0
 
-[node name="Age" type="Label" parent="UI/StatsMenu/VBoxContainer"]
+[node name="Name" type="Label" parent="UI/StatsMenu/VBoxContainer"]
 margin_right = 54.0
 margin_bottom = 10.0
+theme = ExtResource( 2 )
+text = "Name:"
+
+[node name="Age" type="Label" parent="UI/StatsMenu/VBoxContainer"]
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 20.0
 theme = ExtResource( 2 )
 text = "Age: "
 __meta__ = {
@@ -324,9 +334,9 @@ __meta__ = {
 }
 
 [node name="Hunger" type="Label" parent="UI/StatsMenu/VBoxContainer"]
-margin_top = 14.0
+margin_top = 20.0
 margin_right = 54.0
-margin_bottom = 24.0
+margin_bottom = 30.0
 theme = ExtResource( 2 )
 text = "Hunger: "
 __meta__ = {
@@ -334,9 +344,9 @@ __meta__ = {
 }
 
 [node name="Highscore" type="Label" parent="UI/StatsMenu/VBoxContainer"]
-margin_top = 28.0
+margin_top = 30.0
 margin_right = 54.0
-margin_bottom = 38.0
+margin_bottom = 40.0
 theme = ExtResource( 2 )
 text = "Highscore: "
 __meta__ = {
@@ -368,7 +378,7 @@ valign = 1
 script = ExtResource( 4 )
 
 [node name="Player" type="Sprite" parent="."]
-position = Vector2( 43, 33 )
+position = Vector2( 65, 34 )
 texture = ExtResource( 3 )
 hframes = 10
 script = ExtResource( 14 )
