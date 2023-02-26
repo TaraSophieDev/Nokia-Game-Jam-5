@@ -3,7 +3,7 @@ extends Sprite
 onready var animation_player = $AnimationPlayer
 
 export var very_saturated: int = 40
-export var saturated: int = 60
+export var saturated: int = 70
 export var hungry: int = 90
 export var starving: int = 0
 
@@ -41,13 +41,13 @@ func _process(delta):
 	if Global.age <= 1.0:
 		Global.age += delta / 10
 	
-	if Global.hunger >= 70:
+	if Global.hunger >= 75:
 		Global.age += delta / very_saturated
 		$Heart.show()
 		$Heart/HeartAnimationPlayer.play("heart")
 	elif Global.hunger <= 0:
 		get_tree().change_scene("res://scenes/Death.tscn")
-	elif Global.hunger <= 10:
+	elif Global.hunger <= 15:
 		Global.age += delta * starving
 		$Hunger.show()
 		$Hunger/HungerAnimationPlayer.play("hunger", -1, 2.0)

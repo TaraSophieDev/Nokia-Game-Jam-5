@@ -51,5 +51,11 @@ func load_savegame():
 func delete_savegame():
 	var dir = Directory.new()
 	dir.remove(SAVE_GAME_PATH)
-
-
+	
+	Global.score = 0
+	Global.run_highscore = 0
+	Global.frog_name = ""
+	Global.age = 0.0
+	Global.hunger = 99
+	Global.money = 0
+	Global.seen_win_screen = false
